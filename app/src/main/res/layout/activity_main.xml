@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/windowBackground">
+
+    <LinearLayout android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Toolbar -->
+        <include layout="@layout/include_toolbar" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <br.com.consultec.corretor.utils.CustomScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/txtUltimaAtualizacao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="4dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingTop="4dp"
+                            android:text="Última atualização foi 12/12/2016 ás 15:16"
+                            android:textAlignment="center"
+                            android:textStyle="normal|italic"
+                            android:textColor="@color/colorTextSecondary"
+                            android:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/alvo_grafico_principal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TableRow>
+
+                                <LinearLayout
+                                    android:id="@+id/alvo_grafico_notas_pessoal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_weight="5">
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/alvo_grafico_notas_geral"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_weight="5">
+
+                                </LinearLayout>
+
+                            </TableRow>
+                        </TableLayout>
+
+                    </LinearLayout>
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:id="@+id/alvo_box_nota_media"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:id="@+id/alvo_grafico_produtividade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                    <!-- ### -->
+
+
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:id="@+id/alvo_box_tempo_medio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TableRow>
+
+                                <LinearLayout
+                                    android:id="@+id/alvo_box_hoje"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="61.5">
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/alvo_box_imagem_ruim"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="38.5">
+
+                                </LinearLayout>
+
+                            </TableRow>
+                        </TableLayout>
+
+                    </LinearLayout>
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:id="@+id/alvo_box_comparativo_notas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:id="@+id/alvo_box_lotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                    <!-- ### -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp">
+                    </LinearLayout>
+                    <!-- ### -->
+
+                </LinearLayout>
+            </br.com.consultec.corretor.utils.CustomScrollView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    </android.support.v4.widget.DrawerLayout>
