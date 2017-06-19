@@ -5,15 +5,31 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.consultec.corretor.R;
+import br.com.consultec.corretor.model.ReferenciaDaBusca;
 import lecho.lib.hellocharts.listener.PieChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
@@ -23,7 +39,10 @@ import lecho.lib.hellocharts.view.PieChartView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GraficoNotasGeralFragment extends Fragment {
+public class GraficoNotasGeralFragment extends Fragment
+{
+    private String idCorretor           =   "";
+    private String idProcessoSeletivo   =   "";
 
     private PieChartView grafico;
     private PieChartData data;
@@ -36,8 +55,35 @@ public class GraficoNotasGeralFragment extends Fragment {
     private boolean isExploded          = false;
     private boolean hasLabelForSelected = false;
 
+    private String totalNota0           =   "";
+    private String totalNota1           =   "";
+    private String totalNota2           =   "";
+    private String totalNota3           =   "";
+    private String totalNota4           =   "";
+    private String totalNota5           =   "";
+    private String totalNota6           =   "";
+    private String totalNota7           =   "";
+    private String totalNota8           =   "";
+    private String totalNota9           =   "";
+    private String totalNota10          =   "";
+
     public GraficoNotasGeralFragment() {
         // Required empty public constructor
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+        ReferenciaDaBusca referenciaDaBusca = getArguments().getParcelable("dadosBusca");
+
+        idCorretor          =   referenciaDaBusca.getIdCorretor().toString();
+        idProcessoSeletivo  =   referenciaDaBusca.getIdProcessoSeletivo().toString();
+
+        //Log.i("PAULO","IDC -> "+referenciaDaBusca.getIdCorretor().toString());
+        //Log.i("PAULO","IDPS -> "+referenciaDaBusca.getIdProcessoSeletivo().toString());
     }
 
 
@@ -55,12 +101,16 @@ public class GraficoNotasGeralFragment extends Fragment {
 
         bindActivity();
         configuraGrafico();
+
+        carregaDadosVolley();
     }
+
 
     private void bindActivity()
     {
         grafico = (PieChartView) getView().findViewById(R.id.grafico);
     }
+
 
     private void configuraGrafico()
     {
@@ -104,7 +154,7 @@ public class GraficoNotasGeralFragment extends Fragment {
         hasLabelForSelected = false;
     }
 
-    private void generateData()
+    private void generateData(String nota0, String nota1, String nota2, String nota3, String nota4, String nota5, String nota6, String nota7, String nota8, String nota9, String nota10)
     {
         int numValues = 6;
 
@@ -114,43 +164,47 @@ public class GraficoNotasGeralFragment extends Fragment {
             values.add(sliceValue);
         }*/
 
-        SliceValue sliceValue1 = new SliceValue(6, ChartUtils.pickColor());
+        SliceValue sliceValue0 = new SliceValue(Float.parseFloat(nota0), ChartUtils.pickColor());
+        sliceValue0.setLabel("0");
+        values.add(sliceValue0);/**/
+
+        SliceValue sliceValue1 = new SliceValue(Float.parseFloat(nota1), ChartUtils.pickColor());
         sliceValue1.setLabel("1");
         values.add(sliceValue1);
 
-        SliceValue sliceValue2 = new SliceValue(14, ChartUtils.pickColor());
+        SliceValue sliceValue2 = new SliceValue(Float.parseFloat(nota2), ChartUtils.pickColor());
         sliceValue2.setLabel("2");
         values.add(sliceValue2);
 
-        SliceValue sliceValue3 = new SliceValue(27, ChartUtils.pickColor());
+        SliceValue sliceValue3 = new SliceValue(Float.parseFloat(nota3), ChartUtils.pickColor());
         sliceValue3.setLabel("3");
         values.add(sliceValue3);
 
-        SliceValue sliceValue4 = new SliceValue(3, ChartUtils.pickColor());
+        SliceValue sliceValue4 = new SliceValue(Float.parseFloat(nota4), ChartUtils.pickColor());
         sliceValue4.setLabel("4");
         values.add(sliceValue4);
 
-        SliceValue sliceValue5 = new SliceValue(16, ChartUtils.pickColor());
+        SliceValue sliceValue5 = new SliceValue(Float.parseFloat(nota5), ChartUtils.pickColor());
         sliceValue5.setLabel("5");
         values.add(sliceValue5);
 
-        SliceValue sliceValue6 = new SliceValue(4, ChartUtils.pickColor());
+        SliceValue sliceValue6 = new SliceValue(Float.parseFloat(nota6), ChartUtils.pickColor());
         sliceValue6.setLabel("6");
         values.add(sliceValue6);
 
-        SliceValue sliceValue7 = new SliceValue(10, ChartUtils.pickColor());
+        SliceValue sliceValue7 = new SliceValue(Float.parseFloat(nota7), ChartUtils.pickColor());
         sliceValue7.setLabel("7");
         values.add(sliceValue7);
 
-        SliceValue sliceValue8 = new SliceValue(13, ChartUtils.pickColor());
+        SliceValue sliceValue8 = new SliceValue(Float.parseFloat(nota8), ChartUtils.pickColor());
         sliceValue8.setLabel("8");
         values.add(sliceValue8);
 
-        SliceValue sliceValue9 = new SliceValue(7, ChartUtils.pickColor());
+        SliceValue sliceValue9 = new SliceValue(Float.parseFloat(nota9), ChartUtils.pickColor());
         sliceValue9.setLabel("9");
         values.add(sliceValue9);
 
-        SliceValue sliceValue10 = new SliceValue(2, ChartUtils.pickColor());
+        SliceValue sliceValue10 = new SliceValue(Float.parseFloat(nota10), ChartUtils.pickColor());
         sliceValue10.setLabel("10");
         values.add(sliceValue10);
 
@@ -195,7 +249,7 @@ public class GraficoNotasGeralFragment extends Fragment {
     private void explodeChart()
     {
         isExploded = !isExploded;
-        generateData();
+        //generateData();
     }
 
     private void toggleLabelsOutside()
@@ -218,7 +272,7 @@ public class GraficoNotasGeralFragment extends Fragment {
             grafico.setCircleFillRatio(1.0f);
         }
 
-        generateData();
+        //generateData();
     }
 
     private void toggleLabels()
@@ -240,7 +294,7 @@ public class GraficoNotasGeralFragment extends Fragment {
             }
         }
 
-        generateData();
+        //generateData();
     }
 
     private void toggleLabelForSelected()
@@ -264,7 +318,7 @@ public class GraficoNotasGeralFragment extends Fragment {
             }
         }
 
-        generateData();
+        //generateData();
     }
 
     /**
@@ -284,13 +338,113 @@ public class GraficoNotasGeralFragment extends Fragment {
         @Override
         public void onValueSelected(int arcIndex, SliceValue value)
         {
-            Toast.makeText(getActivity(), "Valor: " + value, Toast.LENGTH_SHORT).show();
+            String strAux = new String(value.toString());
+            strAux = strAux.replace("SliceValue [value=","");
+            strAux = strAux.replace(".0]","");
+            Toast.makeText(getActivity(), "Quantidade: " + strAux, Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onValueDeselected()
         {
             // TODO Auto-generated method stub
+        }
+    }
+
+
+    public void carregaDadosVolley()
+    {
+        //progressBar.setVisibility(View.VISIBLE);
+
+        String URL = "http://consultec.com.br/APPS/CORRETOR/getDadosTotalNotasGeral.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        try
+                        {
+                            //Log.i("PAULO", "RESP -> "+response.toString());
+                            JSONObject jsonObject= new JSONObject(response.toString());
+                            separaDadosJSON(jsonObject);
+                            //progressBar.setVisibility(View.INVISIBLE);
+                        }
+                        catch (JSONException e)
+                        {
+
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        //progressBar.setVisibility(View.INVISIBLE);
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError
+            {
+                Map<String,String> parameters = new HashMap<String,String>();
+                parameters.put("idCorretor", idCorretor);
+                parameters.put("idProcessoSeletivo", idProcessoSeletivo);
+                return parameters;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        requestQueue.add(stringRequest);/**/
+
+    }
+
+
+    private void separaDadosJSON(JSONObject json)
+    {
+        //Log.i("PAULO", json.toString());
+        try {
+
+            JSONObject totalGeralLotesJsonObject    =   null;
+            JSONObject totalLoteAtualJsonObject     =   null;
+
+            JSONObject jsonObject                   =   json;
+            JSONArray jsonArray                     =   jsonObject.getJSONArray("dados");
+
+            JSONArray totalNotasPessoalJsonArray    =   jsonArray.getJSONObject((int)0).optJSONArray("total_notas_geral");
+
+            totalNota0                              =   totalNotasPessoalJsonArray.getJSONObject((int)0).getString("nota").toString();
+            totalNota1                              =   totalNotasPessoalJsonArray.getJSONObject((int)1).getString("nota").toString();
+            totalNota2                              =   totalNotasPessoalJsonArray.getJSONObject((int)2).getString("nota").toString();
+            totalNota3                              =   totalNotasPessoalJsonArray.getJSONObject((int)3).getString("nota").toString();
+            totalNota4                              =   totalNotasPessoalJsonArray.getJSONObject((int)4).getString("nota").toString();
+            totalNota5                              =   totalNotasPessoalJsonArray.getJSONObject((int)5).getString("nota").toString();
+            totalNota6                              =   totalNotasPessoalJsonArray.getJSONObject((int)6).getString("nota").toString();
+            totalNota7                              =   totalNotasPessoalJsonArray.getJSONObject((int)7).getString("nota").toString();
+            totalNota8                              =   totalNotasPessoalJsonArray.getJSONObject((int)8).getString("nota").toString();
+            totalNota9                              =   totalNotasPessoalJsonArray.getJSONObject((int)9).getString("nota").toString();
+            totalNota10                             =   totalNotasPessoalJsonArray.getJSONObject((int)10).getString("nota").toString();
+
+            //Log.i("PAULO", "totalNota0 -> "+totalNota0);
+            //Log.i("PAULO", "totalNota1 -> "+totalNota1);
+            //Log.i("PAULO", "totalNota2 -> "+totalNota2);
+            //Log.i("PAULO", "totalNota3 -> "+totalNota3);
+            //Log.i("PAULO", "totalNota4 -> "+totalNota4);
+            //Log.i("PAULO", "totalNota5 -> "+totalNota5);
+            //Log.i("PAULO", "totalNota6 -> "+totalNota6);
+            //Log.i("PAULO", "totalNota7 -> "+totalNota7);
+            //Log.i("PAULO", "totalNota8 -> "+totalNota8);
+            //Log.i("PAULO", "totalNota9 -> "+totalNota9);
+            //Log.i("PAULO", "totalNota10 -> "+totalNota10);
+
+            generateData(totalNota0, totalNota1, totalNota2, totalNota3, totalNota4, totalNota5, totalNota6, totalNota7, totalNota8, totalNota9, totalNota10);
+
+        }
+        catch (JSONException e)
+        {
+            //alert(e.getMessage());
         }
     }
 

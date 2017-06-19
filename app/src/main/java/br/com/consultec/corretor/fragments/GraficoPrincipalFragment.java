@@ -17,16 +17,22 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import at.grabner.circleprogress.CircleProgressView;
 import br.com.consultec.corretor.R;
@@ -38,6 +44,9 @@ import br.com.consultec.corretor.model.ReferenciaDaBusca;
  */
 public class GraficoPrincipalFragment extends Fragment
 {
+    private String idCorretor           = "";
+    private String idProcessoSeletivo   = "";
+
     private String tlTotalAtribuido;
     private String tlTotalCorrigido;
     private String tlTotalNaoCorrigido;
@@ -61,14 +70,12 @@ public class GraficoPrincipalFragment extends Fragment
     private Boolean flagBtnTotalLotes   = true;
     private Boolean flagBtnLoteAtual    = false;
 
-    private String idCorretor           = "";
-    private String idProcessoSeletivo   = "";
-
 
     public GraficoPrincipalFragment()
     {
 
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
@@ -80,8 +87,8 @@ public class GraficoPrincipalFragment extends Fragment
         idCorretor          =   referenciaDaBusca.getIdCorretor().toString();
         idProcessoSeletivo  =   referenciaDaBusca.getIdProcessoSeletivo().toString();
 
-        Log.i("PAULO","IDC -> "+referenciaDaBusca.getIdCorretor().toString());
-        Log.i("PAULO","IDPS -> "+referenciaDaBusca.getIdProcessoSeletivo().toString());
+        //Log.i("PAULO","IDC -> "+referenciaDaBusca.getIdCorretor().toString());
+        //Log.i("PAULO","IDPS -> "+referenciaDaBusca.getIdProcessoSeletivo().toString());
     }
 
 
@@ -155,29 +162,27 @@ public class GraficoPrincipalFragment extends Fragment
 
     public void carregaDadosVolley()
     {
-        progressBar.setVisibility(View.VISIBLE);
+        //progressBar.setVisibility(View.VISIBLE);
 
-        String JSON_URL = "http://consultec.com.br/APPS/CORRETOR/getDadosGraficoPrincipal.php";
-        JSONObject dadosObj = new JSONObject();
+        String URL = "http://consultec.com.br/APPS/CORRETOR/getDadosGraficoPrincipal.php";
 
-        try
-        {
-            dadosObj.put("idCorretor", idCorretor);
-            dadosObj.put("idProcessoSeletivo", idProcessoSeletivo);
-        }
-        catch (Exception e)
-        {
-
-        }
-
-        JsonObjectRequest jsonObjRequest = new JsonObjectRequest(Request.Method.GET,JSON_URL,dadosObj,
-                new Response.Listener<JSONObject>()
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+                new Response.Listener<String>()
                 {
                     @Override
-                    public void onResponse(JSONObject response)
+                    public void onResponse(String response)
                     {
-                        separaDadosJSON(response);
-                        progressBar.setVisibility(View.INVISIBLE);
+                        try
+                        {
+                            //Log.i("PAULO", "RESP -> "+response.toString());
+                            JSONObject jsonObject= new JSONObject(response.toString());
+                            separaDadosJSON(jsonObject);
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                        catch (JSONException e)
+                        {
+
+                        }
                     }
                 },
                 new Response.ErrorListener()
@@ -185,19 +190,29 @@ public class GraficoPrincipalFragment extends Fragment
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        //alert(error.getMessage());
                         progressBar.setVisibility(View.INVISIBLE);
                     }
-                });
+                }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError
+                {
+                    Map<String,String> parameters = new HashMap<String,String>();
+                    parameters.put("idCorretor", idCorretor);
+                    parameters.put("idProcessoSeletivo", idProcessoSeletivo);
+                    return parameters;
+                }
+
+        };
+
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-        requestQueue.add(jsonObjRequest);/**/
+        requestQueue.add(stringRequest);/**/
 
     }
 
 
     private void separaDadosJSON(JSONObject json)
     {
-        Log.i("PAULO", json.toString());
+        //Log.i("PAULO", json.toString());
         try {
 
             JSONObject totalGeralLotesJsonObject    =   null;
@@ -218,16 +233,16 @@ public class GraficoPrincipalFragment extends Fragment
             laTotalNaoCorrigido                     =   totalLoteAtualJsonArray.getJSONObject((int)0).getString("total_nao_corrigido").toString();
             laLoteAberto                            =   totalLoteAtualJsonArray.getJSONObject((int)0).getString("lote_aberto").toString();
 
-            Log.i("PAULO", totalGeralLotesJsonArray.toString());
-            Log.i("PAULO", totalLoteAtualJsonArray.toString());
+            //Log.i("PAULO", totalGeralLotesJsonArray.toString());
+            //Log.i("PAULO", totalLoteAtualJsonArray.toString());
 
-            Log.i("PAULO", tlTotalAtribuido);
-            Log.i("PAULO", tlTotalCorrigido);
-            Log.i("PAULO", tlTotalNaoCorrigido);
-            Log.i("PAULO", laTotalAtribuido);
-            Log.i("PAULO", laTotalCorrigido);
-            Log.i("PAULO", laTotalNaoCorrigido);
-            Log.i("PAULO", laLoteAberto);
+            //Log.i("PAULO", tlTotalAtribuido);
+            //Log.i("PAULO", tlTotalCorrigido);
+            //Log.i("PAULO", tlTotalNaoCorrigido);
+            //Log.i("PAULO", laTotalAtribuido);
+            //Log.i("PAULO", laTotalCorrigido);
+            //Log.i("PAULO", laTotalNaoCorrigido);
+            //Log.i("PAULO", laLoteAberto);
 
             validaLotes(tlTotalAtribuido, tlTotalCorrigido, tlTotalNaoCorrigido, laTotalAtribuido, laTotalCorrigido, laTotalNaoCorrigido, laLoteAberto);
 

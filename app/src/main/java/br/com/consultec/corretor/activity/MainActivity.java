@@ -64,12 +64,18 @@ public class MainActivity extends BaseActivity
     private SwipeRefreshLayout swipeContainer;
 
     private GraficoPrincipalFragment graficoPrincipalFragment;
+    private GraficoNotasPessoalFragment graficoNotasPessoalFragment;
+    private GraficoNotasGeralFragment graficoNotasGeralFragment;
+    private BoxNotaMediaFragment boxNotaMediaFragment;
+    private GraficoProdutividadeFragment graficoProdutividadeFragment;
 
     private Bundle dadosDaBusca;
 
     //private String url                  = "http://www.openturismo.com.br";
     //private String idCorretor           = "142";
     //private String idProcessoSeletivo   = "915017";
+    private String idCorretor           = "1";
+    private String idProcessoSeletivo   = "201700";
 
 
     @Override
@@ -83,7 +89,7 @@ public class MainActivity extends BaseActivity
 
         bindActivity();
 
-        setReferenciaDaBusca("1","201700");
+        setReferenciaDaBusca(idCorretor,idProcessoSeletivo);
 
         addGraficoPrincipal();
         addGraficoNotasPessoal();
@@ -124,6 +130,10 @@ public class MainActivity extends BaseActivity
         dadosDaBusca                = new Bundle();
 
         graficoPrincipalFragment    = new GraficoPrincipalFragment();
+        graficoNotasPessoalFragment = new GraficoNotasPessoalFragment();
+        graficoNotasGeralFragment   = new GraficoNotasGeralFragment();
+        boxNotaMediaFragment        = new BoxNotaMediaFragment();
+        graficoProdutividadeFragment= new GraficoProdutividadeFragment();
     }
 
 
@@ -145,26 +155,30 @@ public class MainActivity extends BaseActivity
 
     private void addGraficoNotasPessoal()
     {
+        graficoNotasPessoalFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerGraficoNotasPessoal = getSupportFragmentManager();
-        fragmentManagerGraficoNotasPessoal.beginTransaction().replace(R.id.alvo_grafico_notas_pessoal, new GraficoNotasPessoalFragment()).commit();
+        fragmentManagerGraficoNotasPessoal.beginTransaction().replace(R.id.alvo_grafico_notas_pessoal, graficoNotasPessoalFragment).commit();
     }
 
     private void addGraficoNotasGeral()
     {
+        graficoNotasGeralFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerGraficoNotasPessoal = getSupportFragmentManager();
-        fragmentManagerGraficoNotasPessoal.beginTransaction().replace(R.id.alvo_grafico_notas_geral, new GraficoNotasGeralFragment()).commit();
+        fragmentManagerGraficoNotasPessoal.beginTransaction().replace(R.id.alvo_grafico_notas_geral, graficoNotasGeralFragment).commit();
     }
 
     private void addGraficoProdutividade()
     {
+        //graficoProdutividadeFragment.carregaDadosVolley();
         FragmentManager fragmentManagerGraficoProdutividade = getSupportFragmentManager();
-        fragmentManagerGraficoProdutividade.beginTransaction().replace(R.id.alvo_grafico_produtividade, new GraficoProdutividadeFragment()).commit();
+        fragmentManagerGraficoProdutividade.beginTransaction().replace(R.id.alvo_grafico_produtividade, graficoProdutividadeFragment).commit();
     }
 
     private void addBoxNotaMedia()
     {
+        boxNotaMediaFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerBoxNotaMedia = getSupportFragmentManager();
-        fragmentManagerBoxNotaMedia.beginTransaction().replace(R.id.alvo_box_nota_media, new BoxNotaMediaFragment()).commit();
+        fragmentManagerBoxNotaMedia.beginTransaction().replace(R.id.alvo_box_nota_media, boxNotaMediaFragment).commit();
     }
 
     private void addBoxTempoMedio()
@@ -212,6 +226,9 @@ public class MainActivity extends BaseActivity
                 // once the network request has completed successfully.
                 carregaDadosVolley(false);
                 graficoPrincipalFragment.carregaDadosVolley();
+                graficoNotasPessoalFragment.carregaDadosVolley();
+                graficoNotasGeralFragment.carregaDadosVolley();
+                boxNotaMediaFragment.carregaDadosVolley();
             }
         });
         // Configure the refreshing colors
