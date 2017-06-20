@@ -68,14 +68,18 @@ public class MainActivity extends BaseActivity
     private GraficoNotasGeralFragment graficoNotasGeralFragment;
     private BoxNotaMediaFragment boxNotaMediaFragment;
     private GraficoProdutividadeFragment graficoProdutividadeFragment;
+    private BoxTempoMedioFragment boxTempoMedioFragment;
+    private BoxHojeFragment boxHojeFragment;
+    private BoxImagemRuimFragment boxImagemRuimFragment;
+    private BoxComparativoNotasFragment boxComparativoNotasFragment;
 
     private Bundle dadosDaBusca;
 
     //private String url                  = "http://www.openturismo.com.br";
-    //private String idCorretor           = "142";
-    //private String idProcessoSeletivo   = "915017";
-    private String idCorretor           = "1";
-    private String idProcessoSeletivo   = "201700";
+    private String idCorretor           = "127";
+    private String idProcessoSeletivo   = "915017";
+    //private String idCorretor           = "1";
+    //private String idProcessoSeletivo   = "201700";
 
 
     @Override
@@ -134,6 +138,11 @@ public class MainActivity extends BaseActivity
         graficoNotasGeralFragment   = new GraficoNotasGeralFragment();
         boxNotaMediaFragment        = new BoxNotaMediaFragment();
         graficoProdutividadeFragment= new GraficoProdutividadeFragment();
+        boxTempoMedioFragment       = new BoxTempoMedioFragment();
+        boxHojeFragment             = new BoxHojeFragment();
+        boxImagemRuimFragment       = new BoxImagemRuimFragment();
+        boxComparativoNotasFragment = new BoxComparativoNotasFragment();
+
     }
 
 
@@ -183,27 +192,31 @@ public class MainActivity extends BaseActivity
 
     private void addBoxTempoMedio()
     {
+        boxTempoMedioFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerBoxTempoMedio = getSupportFragmentManager();
-        fragmentManagerBoxTempoMedio.beginTransaction().replace(R.id.alvo_box_tempo_medio, new BoxTempoMedioFragment()).commit();
+        fragmentManagerBoxTempoMedio.beginTransaction().replace(R.id.alvo_box_tempo_medio, boxTempoMedioFragment).commit();
     }
 
     private void addBoxHoje()
     {
+        boxHojeFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerBoxHoje = getSupportFragmentManager();
-        fragmentManagerBoxHoje.beginTransaction().replace(R.id.alvo_box_hoje, new BoxHojeFragment()).commit();
+        fragmentManagerBoxHoje.beginTransaction().replace(R.id.alvo_box_hoje, boxHojeFragment).commit();
     }
 
     private void addBoxImagemRuim()
     {
+        boxImagemRuimFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerBoxImagemRuim = getSupportFragmentManager();
-        fragmentManagerBoxImagemRuim.beginTransaction().replace(R.id.alvo_box_imagem_ruim, new BoxImagemRuimFragment()).commit();
+        fragmentManagerBoxImagemRuim.beginTransaction().replace(R.id.alvo_box_imagem_ruim, boxImagemRuimFragment).commit();
     }
 
 
     private void addBoxComparativoNotas()
     {
+        boxComparativoNotasFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerBoxComparativoNotas = getSupportFragmentManager();
-        fragmentManagerBoxComparativoNotas.beginTransaction().replace(R.id.alvo_box_comparativo_notas, new BoxComparativoNotasFragment()).commit();
+        fragmentManagerBoxComparativoNotas.beginTransaction().replace(R.id.alvo_box_comparativo_notas, boxComparativoNotasFragment).commit();
     }
 
 
@@ -229,6 +242,10 @@ public class MainActivity extends BaseActivity
                 graficoNotasPessoalFragment.carregaDadosVolley();
                 graficoNotasGeralFragment.carregaDadosVolley();
                 boxNotaMediaFragment.carregaDadosVolley();
+                boxTempoMedioFragment.carregaDadosVolley();
+                boxHojeFragment.carregaDadosVolley();
+                boxImagemRuimFragment.carregaDadosVolley();
+                boxComparativoNotasFragment.carregaDadosVolley();
             }
         });
         // Configure the refreshing colors

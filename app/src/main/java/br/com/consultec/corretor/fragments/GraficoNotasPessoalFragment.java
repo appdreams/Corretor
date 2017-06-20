@@ -161,6 +161,19 @@ public class GraficoNotasPessoalFragment extends Fragment
 
     private void generateData(String nota0, String nota1, String nota2, String nota3, String nota4, String nota5, String nota6, String nota7, String nota8, String nota9, String nota10)
     {
+
+        //Log.i("PAULO", "totalNota0 -> "+nota0);
+        //Log.i("PAULO", "totalNota1 -> "+nota1);
+        //Log.i("PAULO", "totalNota2 -> "+nota2);
+        //Log.i("PAULO", "totalNota3 -> "+nota3);
+        //Log.i("PAULO", "totalNota4 -> "+nota4);
+        //Log.i("PAULO", "totalNota5 -> "+nota5);
+        //Log.i("PAULO", "totalNota6 -> "+nota6);
+        //Log.i("PAULO", "totalNota7 -> "+nota7);
+        //Log.i("PAULO", "totalNota8 -> "+nota8);
+        //Log.i("PAULO", "totalNota9 -> "+nota9);
+        //Log.i("PAULO", "totalNota10 -> "+nota10);
+
         int numValues = 6;
 
         List<SliceValue> values = new ArrayList<SliceValue>();
@@ -169,49 +182,94 @@ public class GraficoNotasPessoalFragment extends Fragment
             values.add(sliceValue);
         }*/
 
-        SliceValue sliceValue0 = new SliceValue(Float.parseFloat(nota0), ChartUtils.pickColor());
-        sliceValue0.setLabel("0");
-        values.add(sliceValue0);/**/
+        if(!nota0.equals("0"))
+        {
+            SliceValue sliceValue0 = new SliceValue(Float.parseFloat(nota0), ChartUtils.pickColor());
+            sliceValue0.setLabel("0");
+            values.add(sliceValue0);/**/
+            //Log.i("PAULO", "ADD 0");
+        }
 
-        SliceValue sliceValue1 = new SliceValue(Float.parseFloat(nota1), ChartUtils.pickColor());
-        sliceValue1.setLabel("1");
-        values.add(sliceValue1);
+        if(!nota1.equals("0"))
+        {
+            SliceValue sliceValue1 = new SliceValue(Float.parseFloat(nota1), ChartUtils.pickColor());
+            sliceValue1.setLabel("1");
+            values.add(sliceValue1);
+            //Log.i("PAULO", "ADD 1");
+        }
 
-        SliceValue sliceValue2 = new SliceValue(Float.parseFloat(nota2), ChartUtils.pickColor());
-        sliceValue2.setLabel("2");
-        values.add(sliceValue2);
+        if(!nota2.equals("0"))
+        {
+            SliceValue sliceValue2 = new SliceValue(Float.parseFloat(nota2), ChartUtils.pickColor());
+            sliceValue2.setLabel("2");
+            values.add(sliceValue2);
+            //Log.i("PAULO", "ADD 2");
+        }
 
-        SliceValue sliceValue3 = new SliceValue(Float.parseFloat(nota3), ChartUtils.pickColor());
-        sliceValue3.setLabel("3");
-        values.add(sliceValue3);
+        if(!nota3.equals("0"))
+        {
+            SliceValue sliceValue3 = new SliceValue(Float.parseFloat(nota3), ChartUtils.pickColor());
+            sliceValue3.setLabel("3");
+            values.add(sliceValue3);
+            //Log.i("PAULO", "ADD 3");
+        }
 
-        SliceValue sliceValue4 = new SliceValue(Float.parseFloat(nota4), ChartUtils.pickColor());
-        sliceValue4.setLabel("4");
-        values.add(sliceValue4);
+        if(!nota4.equals("0"))
+        {
+            SliceValue sliceValue4 = new SliceValue(Float.parseFloat(nota4), ChartUtils.pickColor());
+            sliceValue4.setLabel("4");
+            values.add(sliceValue4);
+            //Log.i("PAULO", "ADD 4");
+        }
 
-        SliceValue sliceValue5 = new SliceValue(Float.parseFloat(nota5), ChartUtils.pickColor());
-        sliceValue5.setLabel("5");
-        values.add(sliceValue5);
+        if(!nota5.equals("0"))
+        {
+            SliceValue sliceValue5 = new SliceValue(Float.parseFloat(nota5), ChartUtils.pickColor());
+            sliceValue5.setLabel("5");
+            values.add(sliceValue5);
+            //Log.i("PAULO", "ADD 5");
+        }
 
-        SliceValue sliceValue6 = new SliceValue(Float.parseFloat(nota6), ChartUtils.pickColor());
-        sliceValue6.setLabel("6");
-        values.add(sliceValue6);
+        if(!nota6.equals("0"))
+        {
+            SliceValue sliceValue6 = new SliceValue(Float.parseFloat(nota6), ChartUtils.pickColor());
+            sliceValue6.setLabel("6");
+            values.add(sliceValue6);
+            //Log.i("PAULO", "ADD 6");
+        }
 
-        SliceValue sliceValue7 = new SliceValue(Float.parseFloat(nota7), ChartUtils.pickColor());
-        sliceValue7.setLabel("7");
-        values.add(sliceValue7);
+        if(!nota7.equals("0"))
+        {
+            SliceValue sliceValue7 = new SliceValue(Float.parseFloat(nota7), ChartUtils.pickColor());
+            sliceValue7.setLabel("7");
+            values.add(sliceValue7);
+            //Log.i("PAULO", "ADD 7");
+        }
 
-        SliceValue sliceValue8 = new SliceValue(Float.parseFloat(nota8), ChartUtils.pickColor());
-        sliceValue8.setLabel("8");
-        values.add(sliceValue8);
+        if(!nota8.equals("0"))
+        {
+            SliceValue sliceValue8 = new SliceValue(Float.parseFloat(nota8), ChartUtils.pickColor());
+            sliceValue8.setLabel("8");
+            values.add(sliceValue8);
+            //Log.i("PAULO", "ADD 8");
+        }
 
-        SliceValue sliceValue9 = new SliceValue(Float.parseFloat(nota9), ChartUtils.pickColor());
-        sliceValue9.setLabel("9");
-        values.add(sliceValue9);
+        if(!nota9.equals("0"))
+        {
+            SliceValue sliceValue9 = new SliceValue(Float.parseFloat(nota9), ChartUtils.pickColor());
+            sliceValue9.setLabel("9");
+            values.add(sliceValue9);
+            //Log.i("PAULO", "ADD 9");
+        }
 
-        SliceValue sliceValue10 = new SliceValue(Float.parseFloat(nota10), ChartUtils.pickColor());
-        sliceValue10.setLabel("10");
-        values.add(sliceValue10);
+        if(!nota10.equals("0"))
+        {
+            SliceValue sliceValue10 = new SliceValue(Float.parseFloat(nota10), ChartUtils.pickColor());
+            sliceValue10.setLabel("10");
+            values.add(sliceValue10);
+            //Log.i("PAULO", "ADD 10");
+        }
+
 
         data = new PieChartData(values);
         data.setHasLabels(hasLabels);
@@ -377,7 +435,7 @@ public class GraficoNotasPessoalFragment extends Fragment
                     {
                         try
                         {
-                            //Log.i("PAULO", "RESP -> "+response.toString());
+                            //Log.i("PAULO", "RESP P -> "+response.toString());
                             JSONObject jsonObject= new JSONObject(response.toString());
                             separaDadosJSON(jsonObject);
                             //progressBar.setVisibility(View.INVISIBLE);

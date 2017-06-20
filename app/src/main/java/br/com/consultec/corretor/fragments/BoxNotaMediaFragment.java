@@ -44,7 +44,8 @@ public class BoxNotaMediaFragment extends Fragment
     private String notaMediaPessoal;
     private String notaMediaGeral;
 
-    public BoxNotaMediaFragment() {
+    public BoxNotaMediaFragment()
+    {
         // Required empty public constructor
     }
 
@@ -59,8 +60,8 @@ public class BoxNotaMediaFragment extends Fragment
         idCorretor          =   referenciaDaBusca.getIdCorretor().toString();
         idProcessoSeletivo  =   referenciaDaBusca.getIdProcessoSeletivo().toString();
 
-        Log.i("PAULO","IDC -> "+referenciaDaBusca.getIdCorretor().toString());
-        Log.i("PAULO","IDPS -> "+referenciaDaBusca.getIdProcessoSeletivo().toString());
+        //Log.i("PAULO","IDC -> "+referenciaDaBusca.getIdCorretor().toString());
+        //Log.i("PAULO","IDPS -> "+referenciaDaBusca.getIdProcessoSeletivo().toString());
     }
 
 
@@ -104,7 +105,7 @@ public class BoxNotaMediaFragment extends Fragment
                     {
                         try
                         {
-                            Log.i("PAULO", "RESP -> "+response.toString());
+                            //Log.i("PAULO", "RESP -> "+response.toString());
                             JSONObject jsonObject= new JSONObject(response.toString());
                             separaDadosJSON(jsonObject);
                             //progressBar.setVisibility(View.INVISIBLE);
@@ -142,7 +143,7 @@ public class BoxNotaMediaFragment extends Fragment
 
     private void separaDadosJSON(JSONObject json)
     {
-        Log.i("PAULO", json.toString());
+        //Log.i("PAULO", json.toString());
         try {
 
             JSONObject totalGeralLotesJsonObject    =   null;
@@ -155,8 +156,8 @@ public class BoxNotaMediaFragment extends Fragment
             notaMediaPessoal    =   notaMediaJsonArray.getJSONObject((int)0).getString("pessoal").toString();
             notaMediaGeral      =   notaMediaJsonArray.getJSONObject((int)0).getString("geral").toString();
 
-            Log.i("PAULO", " -> "+notaMediaJsonArray.getJSONObject((int)0).getString("pessoal").toString());
-            Log.i("PAULO", " -> "+notaMediaJsonArray.getJSONObject((int)0).getString("geral").toString());
+            //Log.i("PAULO", " -> "+notaMediaJsonArray.getJSONObject((int)0).getString("pessoal").toString());
+            //Log.i("PAULO", " -> "+notaMediaJsonArray.getJSONObject((int)0).getString("geral").toString());
 
             setDadosNotaMedia(notaMediaPessoal, notaMediaGeral);
 

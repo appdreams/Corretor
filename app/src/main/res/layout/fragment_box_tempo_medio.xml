@@ -51,10 +51,11 @@
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"/>
                     <TextView
+                        android:id="@+id/txtTempoMedioPessoal"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="5"
-                        android:text="5.30"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="30dp"
@@ -80,10 +81,11 @@
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"/>
                     <TextView
+                        android:id="@+id/txtTempoMedioGeral"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="5"
-                        android:text="2.27"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="30dp"

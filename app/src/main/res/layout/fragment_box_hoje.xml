@@ -33,9 +33,10 @@
                 android:layout_height="2dp"
                 android:background="@color/gray_400"/>
             <TextView
+                android:id="@+id/txtTotalHoje"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="254"
+                android:text=""
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textStyle="bold"

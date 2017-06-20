@@ -211,134 +211,134 @@
                                 android:textStyle="bold"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP0"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="10"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="5"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="19"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="41"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP4"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="215"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP5"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape_selected"
                                 android:padding="5dp"
-                                android:text="434"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"
                                 android:textStyle="bold"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP6"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="267"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP7"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="98"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP8"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="41"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP9"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="10"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaP10"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="41"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaMP"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="5.2"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
@@ -361,135 +361,134 @@
                                 android:textStyle="bold"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG0"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="11"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="6"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
-                                android:id="@+id/textView2"
+                                android:id="@+id/txtNotaG2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="42"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="48"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG4"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="184"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG5"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="227"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG6"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape_selected"
                                 android:padding="5dp"
-                                android:text="276"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"
                                 android:textStyle="bold"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG7"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="176"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG8"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="89"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG9"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="30"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaG10"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="11"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
 
                             <TextView
-
+                                android:id="@+id/txtNotaMG"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/cell_shape"
                                 android:padding="5dp"
-                                android:text="6.1"
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textSize="10sp"></TextView>
