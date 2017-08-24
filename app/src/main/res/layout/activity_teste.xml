@@ -15,11 +15,18 @@
 
         <include layout="@layout/include_toolbar" />
 
-        <lecho.lib.hellocharts.view.ComboLineColumnChartView
+        <!--lecho.lib.hellocharts.view.ComboLineColumnChartView
             android:id="@+id/grafico"
             android:layout_width="match_parent"
             android:layout_height="200dp">
-        </lecho.lib.hellocharts.view.ComboLineColumnChartView>
+        </lecho.lib.hellocharts.view.ComboLineColumnChartView-->
+
+        <lecho.lib.hellocharts.view.ColumnChartView
+            android:id="@+id/grafico"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+        </lecho.lib.hellocharts.view.ColumnChartView>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

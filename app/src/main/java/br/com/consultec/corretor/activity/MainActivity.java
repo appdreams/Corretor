@@ -76,8 +76,8 @@ public class MainActivity extends BaseActivity
     private Bundle dadosDaBusca;
 
     //private String url                  = "http://www.openturismo.com.br";
-    private String idCorretor           = "127";
-    private String idProcessoSeletivo   = "915017";
+    private String idCorretor           = "176";
+    private String idProcessoSeletivo   = "956093";
     //private String idCorretor           = "1";
     //private String idProcessoSeletivo   = "201700";
 

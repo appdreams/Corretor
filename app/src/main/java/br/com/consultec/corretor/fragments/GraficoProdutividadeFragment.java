@@ -15,6 +15,7 @@ import java.util.List;
 import br.com.consultec.corretor.R;
 import lecho.lib.hellocharts.listener.ComboLineColumnChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
 import lecho.lib.hellocharts.model.Column;
 import lecho.lib.hellocharts.model.ColumnChartData;
 import lecho.lib.hellocharts.model.ComboLineColumnChartData;
@@ -23,6 +24,7 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.SubcolumnValue;
 import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.view.ColumnChartView;
 import lecho.lib.hellocharts.view.ComboLineColumnChartView;
 import lecho.lib.hellocharts.view.PieChartView;
 
@@ -32,8 +34,9 @@ import lecho.lib.hellocharts.view.PieChartView;
 public class GraficoProdutividadeFragment extends Fragment
 {
 
-    private ComboLineColumnChartView grafico;
-    private ComboLineColumnChartData data;
+    private ColumnChartView graficoPessoal;
+    private ColumnChartView graficoGeral;
+    private ColumnChartData columnData;
 
     private int numberOfLines           = 1;
     private int maxNumberOfLines        = 4;
@@ -48,6 +51,8 @@ public class GraficoProdutividadeFragment extends Fragment
     private boolean isCubic             = false;
     private boolean hasLabels           = false;
     private boolean hasLabelForSelected = false;
+
+    public final static String[] dias = new String[]{"10/08", "11/08", "12/08", "13/08", "14/08", "15/08", "16/08", "17/08"};
 
     public GraficoProdutividadeFragment()
     {
@@ -73,207 +78,85 @@ public class GraficoProdutividadeFragment extends Fragment
 
     private void bindActivity()
     {
-        grafico = (ComboLineColumnChartView) getView().findViewById(R.id.grafico);
+        graficoPessoal = (ColumnChartView) getView().findViewById(R.id.graficoPessoal);
+        graficoGeral   = (ColumnChartView) getView().findViewById(R.id.graficoGeral);
     }
 
     private void configuraGrafico()
     {
-        grafico = (ComboLineColumnChartView) getView().findViewById(R.id.grafico);
-        grafico.setOnValueTouchListener(new ValueTouchListener());
+        //graficoPessoal.setOnValueTouchListener(new ValueTouchListener());
+        //graficoGeral.setOnValueTouchListener(new ValueTouchListener());
 
-        generateValues();
-        //generateData();
-        toggleLabels();
+        configuraGraficoPessoal();
+        configuraGraficoGeral();
     }
 
-    private void generateValues() {
-        for (int i = 0; i < maxNumberOfLines; ++i) {
-            for (int j = 0; j < numberOfPoints; ++j) {
-                randomNumbersTab[i][j] = (float) Math.random() * 50f + 5;
-            }
-        }
-    }
-
-    private void reset()
+    private void configuraGraficoPessoal()
     {
-        numberOfLines = 1;
+        int numColumns = dias.length;
 
-        hasAxes = true;
-        hasAxesNames = true;
-        hasLines = true;
-        hasPoints = true;
-        hasLabels = false;
-        isCubic = false;
-
-    }
-
-    private void generateData()
-    {
-        // Chart looks the best when line data and column data have similar maximum viewports.
-        data = new ComboLineColumnChartData(generateColumnData(), generateLineData());
-
-        if (hasAxes)
-        {
-            Axis axisX = new Axis();
-            Axis axisY = new Axis().setHasLines(true);
-            if (hasAxesNames)
-            {
-                axisX.setName("Axis X");
-                axisY.setName("Axis Y");
-            }
-            data.setAxisXBottom(axisX);
-            data.setAxisYLeft(axisY);
-        }
-        else
-        {
-            data.setAxisXBottom(null);
-            data.setAxisYLeft(null);
-        }
-
-        grafico.setComboLineColumnChartData(data);
-    }
-
-    private LineChartData generateLineData()
-    {
-
-        List<Line> lines = new ArrayList<Line>();
-
-        for (int i = 0; i < numberOfLines; ++i)
-        {
-
-            List<PointValue> values = new ArrayList<PointValue>();
-
-            for (int j = 0; j < numberOfPoints; ++j)
-            {
-                values.add(new PointValue(j, randomNumbersTab[i][j]));
-            }
-
-            Line line = new Line(values);
-            line.setColor(ChartUtils.COLORS[i]);
-            line.setCubic(isCubic);
-            //line.setHasLabels(hasLabels);
-            line.setHasLines(hasLines);
-            line.setHasPoints(hasPoints);
-            lines.add(line);
-        }
-
-        LineChartData lineChartData = new LineChartData(lines);
-
-        return lineChartData;
-
-    }
-
-    private ColumnChartData generateColumnData()
-    {
-        int numSubcolumns = 1;
-        int numColumns = 12;
-        // Column can have many subcolumns, here by default I use 1 subcolumn in each of 8 columns.
+        List<AxisValue> axisValues = new ArrayList<AxisValue>();
         List<Column> columns = new ArrayList<Column>();
         List<SubcolumnValue> values;
+
         for (int i = 0; i < numColumns; ++i)
         {
 
             values = new ArrayList<SubcolumnValue>();
 
-            for (int j = 0; j < numSubcolumns; ++j)
-            {
-                values.add(new SubcolumnValue((float) Math.random() * 50 + 5, ChartUtils.pickColor()));
-            }
+            values.add(new SubcolumnValue((float) Math.random() * 50f + 5, ChartUtils.pickColor()));
+
+            axisValues.add(new AxisValue(i).setLabel(dias[i]));
 
             Column column = new Column(values);
-            column.setHasLabels(hasLabels);
-            column.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            column.setHasLabels(true);
+            column.setHasLabelsOnlyForSelected(false);
             columns.add(column);
-            //columns.add(new Column(values));
+
         }
 
-        ColumnChartData columnChartData = new ColumnChartData(columns);
-        return columnChartData;
+        columnData = new ColumnChartData(columns);
+
+        columnData.setAxisXBottom(new Axis(axisValues).setHasLines(true));
+        columnData.setAxisXBottom(new Axis(axisValues).setName("PESSOAL"));
+        columnData.setAxisYLeft(new Axis().setHasLines(true).setMaxLabelChars(2));
+
+        graficoPessoal.setColumnChartData(columnData);
     }
 
-    private void addLineToData()
+    private void configuraGraficoGeral()
     {
-        if (data.getLineChartData().getLines().size() >= maxNumberOfLines)
+
+        int numColumns = dias.length;
+
+        List<AxisValue> axisValues = new ArrayList<AxisValue>();
+        List<Column> columns = new ArrayList<Column>();
+        List<SubcolumnValue> values;
+
+        for (int i = 0; i < numColumns; ++i)
         {
-            Toast.makeText(getActivity(), "Samples app uses max 4 lines!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else
-        {
-            ++numberOfLines;
-        }
 
-        generateData();
-    }
+            values = new ArrayList<SubcolumnValue>();
 
-    private void toggleLines()
-    {
-        hasLines = !hasLines;
+            values.add(new SubcolumnValue((float) Math.random() * 50f + 5, ChartUtils.pickColor()));
 
-        generateData();
-    }
+            axisValues.add(new AxisValue(i).setLabel(dias[i]));
 
-    private void togglePoints()
-    {
-        hasPoints = !hasPoints;
+            Column column = new Column(values);
+            column.setHasLabels(true);
+            column.setHasLabelsOnlyForSelected(false);
+            columns.add(column);
 
-        generateData();
-    }
-
-    private void toggleCubic()
-    {
-        isCubic = !isCubic;
-
-        generateData();
-    }
-
-    private void toggleLabels()
-    {
-        hasLabels = !hasLabels;
-
-        if (hasLabels)
-        {
-            hasLabelForSelected = false;
-            grafico.setValueSelectionEnabled(hasLabelForSelected);
-        }
-        generateData();
-    }
-
-    private void toggleAxes()
-    {
-        hasAxes = !hasAxes;
-
-        generateData();
-    }
-
-    private void toggleAxesNames()
-    {
-        hasAxesNames = !hasAxesNames;
-
-        generateData();
-    }
-
-    private void prepareDataAnimation()
-    {
-
-        // Line animations
-        for (Line line : data.getLineChartData().getLines())
-        {
-            for (PointValue value : line.getValues())
-            {
-                // Here I modify target only for Y values but it is OK to modify X targets as well.
-                value.setTarget(value.getX(), (float) Math.random() * 50 + 5);
-            }
         }
 
-        // Columns animations
-        for (Column column : data.getColumnChartData().getColumns())
-        {
-            for (SubcolumnValue value : column.getValues())
-            {
-                value.setTarget((float) Math.random() * 50 + 5);
-            }
-        }
+        columnData = new ColumnChartData(columns);
+
+        columnData.setAxisXBottom(new Axis(axisValues).setHasLines(true));
+        columnData.setAxisXBottom(new Axis(axisValues).setName("GERAL"));
+        columnData.setAxisYLeft(new Axis().setHasLines(true).setMaxLabelChars(2));
+
+        graficoGeral.setColumnChartData(columnData);
+
     }
 
     private class ValueTouchListener implements ComboLineColumnChartOnValueSelectListener

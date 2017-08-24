@@ -31,11 +31,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/gray_400"/>
-            <lecho.lib.hellocharts.view.ComboLineColumnChartView
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_height="20dp"
+                android:background="@color/white"/>
+            <!--lecho.lib.hellocharts.view.ComboLineColumnChartView
                 android:id="@+id/grafico"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
-            </lecho.lib.hellocharts.view.ComboLineColumnChartView>
+            </lecho.lib.hellocharts.view.ComboLineColumnChartView-->
+            <lecho.lib.hellocharts.view.ColumnChartView
+                android:id="@+id/graficoPessoal"
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+            </lecho.lib.hellocharts.view.ColumnChartView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_height="20dp"
+                android:background="@color/white"/>
+            <lecho.lib.hellocharts.view.ColumnChartView
+                android:id="@+id/graficoGeral"
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+            </lecho.lib.hellocharts.view.ColumnChartView>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
