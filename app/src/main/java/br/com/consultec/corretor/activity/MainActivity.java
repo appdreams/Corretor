@@ -178,7 +178,7 @@ public class MainActivity extends BaseActivity
 
     private void addGraficoProdutividade()
     {
-        //graficoProdutividadeFragment.carregaDadosVolley();
+        graficoProdutividadeFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerGraficoProdutividade = getSupportFragmentManager();
         fragmentManagerGraficoProdutividade.beginTransaction().replace(R.id.alvo_grafico_produtividade, graficoProdutividadeFragment).commit();
     }
@@ -246,6 +246,7 @@ public class MainActivity extends BaseActivity
                 boxHojeFragment.carregaDadosVolley();
                 boxImagemRuimFragment.carregaDadosVolley();
                 boxComparativoNotasFragment.carregaDadosVolley();
+                graficoProdutividadeFragment.carregaDadosVolley();
             }
         });
         // Configure the refreshing colors
