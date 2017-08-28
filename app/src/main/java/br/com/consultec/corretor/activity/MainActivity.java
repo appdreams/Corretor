@@ -72,11 +72,12 @@ public class MainActivity extends BaseActivity
     private BoxHojeFragment boxHojeFragment;
     private BoxImagemRuimFragment boxImagemRuimFragment;
     private BoxComparativoNotasFragment boxComparativoNotasFragment;
+    private BoxLotesFragment boxLotesFragment;
 
     private Bundle dadosDaBusca;
 
     //private String url                  = "http://www.openturismo.com.br";
-    private String idCorretor           = "176";
+    private String idCorretor           = "173";
     private String idProcessoSeletivo   = "956093";
     //private String idCorretor           = "1";
     //private String idProcessoSeletivo   = "201700";
@@ -142,6 +143,7 @@ public class MainActivity extends BaseActivity
         boxHojeFragment             = new BoxHojeFragment();
         boxImagemRuimFragment       = new BoxImagemRuimFragment();
         boxComparativoNotasFragment = new BoxComparativoNotasFragment();
+        boxLotesFragment            = new BoxLotesFragment();
 
     }
 
@@ -222,8 +224,9 @@ public class MainActivity extends BaseActivity
 
     private void addBoxLotes()
     {
+        boxLotesFragment.setArguments(getReferenciaDaBusca());
         FragmentManager fragmentManagerBoxLotes = getSupportFragmentManager();
-        fragmentManagerBoxLotes.beginTransaction().replace(R.id.alvo_box_lotes, new BoxLotesFragment()).commit();
+        fragmentManagerBoxLotes.beginTransaction().replace(R.id.alvo_box_lotes, boxLotesFragment).commit();
     }
 
 

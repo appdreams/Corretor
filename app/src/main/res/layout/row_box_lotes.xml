@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linhaLotes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="15"
+        android:background="@drawable/cell_shape"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="5dp"
+        android:text=""
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="10sp"></TextView>
+
+    <TextView
+        android:id="@+id/txtQuantidade"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cell_shape"
+        android:padding="5dp"
+        android:text=""
+        android:gravity="center_vertical|center_horizontal"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="10sp"
+        android:layout_weight="10"></TextView>
+
+    <TextView
+        android:id="@+id/txtInicializado"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cell_shape"
+        android:padding="5dp"
+        android:text=""
+        android:gravity="center_vertical|center_horizontal"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="10sp"
+        android:layout_weight="25"></TextView>
+
+    <TextView
+        android:id="@+id/txtFinalizado"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cell_shape"
+        android:padding="5dp"
+        android:text=""
+        android:gravity="center_vertical|center_horizontal"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="10sp"
+        android:layout_weight="25"></TextView>
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/cell_shape"
+        android:padding="5dp"
+        android:text="FINALIZADO"
+        android:gravity="center_vertical|center_horizontal"
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="10sp"
+        android:layout_weight="25"></TextView>
+
+</TableRow>

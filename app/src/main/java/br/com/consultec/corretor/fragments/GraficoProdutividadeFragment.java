@@ -56,11 +56,6 @@ public class GraficoProdutividadeFragment extends Fragment
     private ColumnChartView graficoGeral;
     private ColumnChartData columnData;
 
-    private int numberOfLines           = 1;
-    private int maxNumberOfLines        = 4;
-    private int numberOfPoints          = 12;
-
-    public final static String[] dias = new String[]{"10/08", "11/08", "12/08", "13/08", "14/08", "15/08", "16/08", "17/08"};
 
     public GraficoProdutividadeFragment()
     {
@@ -109,7 +104,6 @@ public class GraficoProdutividadeFragment extends Fragment
         //graficoGeral.setOnValueTouchListener(new ValueTouchListener());
         carregaDadosVolley();
 
-        configuraGraficoGeral();
     }
 
     public void carregaDadosVolley()
@@ -166,19 +160,24 @@ public class GraficoProdutividadeFragment extends Fragment
         //Log.i("PAULO", json.toString());
         try {
 
-            JSONObject totalGeralLotesJsonObject    =   null;
-            JSONObject totalLoteAtualJsonObject     =   null;
+            JSONArray totalProdutividadePessoal    =   null;
+            JSONArray totalProdutividadeGeral      =   null;
 
             JSONObject jsonObject                   =   json;
             JSONArray jsonArray                     =   jsonObject.getJSONArray("dados");
 
-            JSONArray totalProdutividadePessoal     =   jsonArray.getJSONObject((int)0).optJSONArray("total_produtividade_pessoal");
-            JSONArray totalProdutividadeGeral       =   jsonArray.getJSONObject((int)0).optJSONArray("total_produtividade_geral");
+            totalProdutividadePessoal     =   jsonArray.getJSONObject((int)0).optJSONArray("total_produtividade_pessoal");
+            totalProdutividadeGeral       =   jsonArray.getJSONObject((int)0).optJSONArray("total_produtividade_geral");
 
             Log.i("PAULO", "totalProdutividadePessoal -> "+totalProdutividadePessoal);
             Log.i("PAULO", "totalProdutividadeGeral -> "+totalProdutividadeGeral);
 
-            configuraGraficoPessoal(totalProdutividadePessoal);
+            if((totalProdutividadePessoal != null) && (totalProdutividadeGeral != null))
+            {
+                configuraGraficoPessoal(totalProdutividadePessoal);
+                configuraGraficoGeral(totalProdutividadePessoal,totalProdutividadeGeral);
+            }
+
 
         }
         catch (JSONException e)
@@ -187,9 +186,9 @@ public class GraficoProdutividadeFragment extends Fragment
         }
     }
 
-    private void configuraGraficoPessoal(JSONArray dados)
+    private void configuraGraficoPessoal(JSONArray dadosPessoal)
     {
-        int numColumns = dados.length();
+        int numColumns = dadosPessoal.length();
 
         List<AxisValue> axisValues = new ArrayList<AxisValue>();
         List<Column> columns = new ArrayList<Column>();
@@ -201,8 +200,8 @@ public class GraficoProdutividadeFragment extends Fragment
             values = new ArrayList<SubcolumnValue>();
 
             try {
-                values.add(new SubcolumnValue(Float.parseFloat(dados.getJSONObject(i).getString("quantidade")), ChartUtils.pickColor()));
-                axisValues.add(new AxisValue(i).setLabel(dados.getJSONObject(i).getString("data").substring(0, 5)));
+                values.add(new SubcolumnValue(Float.parseFloat(dadosPessoal.getJSONObject(i).getString("quantidade")), ChartUtils.pickColor()));
+                axisValues.add(new AxisValue(i).setLabel(dadosPessoal.getJSONObject(i).getString("data").substring(0, 5)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -223,10 +222,10 @@ public class GraficoProdutividadeFragment extends Fragment
         graficoPessoal.setColumnChartData(columnData);
     }
 
-    private void configuraGraficoGeral()
+    private void configuraGraficoGeral(JSONArray dadosPessoal, JSONArray dadosGeral)
     {
 
-        int numColumns = dias.length;
+        int numColumns = dadosPessoal.length();
 
         List<AxisValue> axisValues = new ArrayList<AxisValue>();
         List<Column> columns = new ArrayList<Column>();
@@ -234,17 +233,26 @@ public class GraficoProdutividadeFragment extends Fragment
 
         for (int i = 0; i < numColumns; ++i)
         {
+            try {
 
-            values = new ArrayList<SubcolumnValue>();
+                if(dadosPessoal.getJSONObject(i).getString("data").toString().equals(dadosGeral.getJSONObject(i).getString("data").toString()))
+                {
+                    Log.i("PAULO", "#---> "+dadosPessoal.getJSONObject(i).getString("data"));
 
-            values.add(new SubcolumnValue((float) Math.random() * 50f + 5, ChartUtils.pickColor()));
+                    values = new ArrayList<SubcolumnValue>();
 
-            axisValues.add(new AxisValue(i).setLabel(dias[i]));
+                    values.add(new SubcolumnValue(Float.parseFloat(dadosGeral.getJSONObject(i).getString("quantidade")), ChartUtils.pickColor()));
+                    axisValues.add(new AxisValue(i).setLabel(dadosGeral.getJSONObject(i).getString("data").substring(0, 5)));
 
-            Column column = new Column(values);
-            column.setHasLabels(true);
-            column.setHasLabelsOnlyForSelected(false);
-            columns.add(column);
+                    Column column = new Column(values);
+                    column.setHasLabels(true);
+                    column.setHasLabelsOnlyForSelected(false);
+                    columns.add(column);
+                }
+
+            }catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         }
 
