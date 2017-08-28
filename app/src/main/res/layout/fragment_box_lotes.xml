@@ -37,6 +37,7 @@
 
 
             <TableLayout
+                android:id="@+id/tabelaLotes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
@@ -116,7 +117,7 @@
                         android:layout_weight="25"></TextView>
                 </TableRow>
 
-                <TableRow
+                <!--TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -814,7 +815,7 @@
                         android:textAlignment="gravity"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="10sp"></TextView>
-                </TableRow>
+                </TableRow-->
 
             </TableLayout>
 

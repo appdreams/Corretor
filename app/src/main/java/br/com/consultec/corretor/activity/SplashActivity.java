@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import br.com.consultec.corretor.R;
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

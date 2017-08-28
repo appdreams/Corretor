@@ -1,6 +1,7 @@
 package br.com.consultec.corretor.fragments;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,18 @@ public class BoxComparativoNotasFragment extends Fragment
     private String idCorretor           =   "";
     private String idProcessoSeletivo   =   "";
 
+    private TextView txtNota0;
+    private TextView txtNota1;
+    private TextView txtNota2;
+    private TextView txtNota3;
+    private TextView txtNota4;
+    private TextView txtNota5;
+    private TextView txtNota6;
+    private TextView txtNota7;
+    private TextView txtNota8;
+    private TextView txtNota9;
+    private TextView txtNota10;
+
     private TextView txtNotaP0;
     private TextView txtNotaP1;
     private TextView txtNotaP2;
@@ -48,6 +61,7 @@ public class BoxComparativoNotasFragment extends Fragment
     private TextView txtNotaP8;
     private TextView txtNotaP9;
     private TextView txtNotaP10;
+
     private TextView txtNotaMP;
     private TextView txtNotaG0;
     private TextView txtNotaG1;
@@ -60,6 +74,7 @@ public class BoxComparativoNotasFragment extends Fragment
     private TextView txtNotaG8;
     private TextView txtNotaG9;
     private TextView txtNotaG10;
+
     private TextView txtNotaMG;
 
     private String notaP0;
@@ -73,6 +88,7 @@ public class BoxComparativoNotasFragment extends Fragment
     private String notaP8;
     private String notaP9;
     private String notaP10;
+
     private String notaMP;
     private String notaG0;
     private String notaG1;
@@ -85,6 +101,7 @@ public class BoxComparativoNotasFragment extends Fragment
     private String notaG8;
     private String notaG9;
     private String notaG10;
+
     private String notaMG;
 
     private String modaP0;
@@ -155,6 +172,18 @@ public class BoxComparativoNotasFragment extends Fragment
 
     private void bindActivity()
     {
+        txtNota0    = (TextView) getView().findViewById(R.id.txtNota0);
+        txtNota1    = (TextView) getView().findViewById(R.id.txtNota1);
+        txtNota2    = (TextView) getView().findViewById(R.id.txtNota2);
+        txtNota3    = (TextView) getView().findViewById(R.id.txtNota3);
+        txtNota4    = (TextView) getView().findViewById(R.id.txtNota4);
+        txtNota5    = (TextView) getView().findViewById(R.id.txtNota5);
+        txtNota6    = (TextView) getView().findViewById(R.id.txtNota6);
+        txtNota7    = (TextView) getView().findViewById(R.id.txtNota7);
+        txtNota8    = (TextView) getView().findViewById(R.id.txtNota8);
+        txtNota9    = (TextView) getView().findViewById(R.id.txtNota9);
+        txtNota10   = (TextView) getView().findViewById(R.id.txtNota10);
+
         txtNotaP0   = (TextView) getView().findViewById(R.id.txtNotaP0);
         txtNotaP1   = (TextView) getView().findViewById(R.id.txtNotaP1);
         txtNotaP2   = (TextView) getView().findViewById(R.id.txtNotaP2);
@@ -166,6 +195,7 @@ public class BoxComparativoNotasFragment extends Fragment
         txtNotaP8   = (TextView) getView().findViewById(R.id.txtNotaP8);
         txtNotaP9   = (TextView) getView().findViewById(R.id.txtNotaP9);
         txtNotaP10  = (TextView) getView().findViewById(R.id.txtNotaP10);
+
         txtNotaMP   = (TextView) getView().findViewById(R.id.txtNotaMP);
         txtNotaG0   = (TextView) getView().findViewById(R.id.txtNotaG0);
         txtNotaG1   = (TextView) getView().findViewById(R.id.txtNotaG1);
@@ -178,6 +208,7 @@ public class BoxComparativoNotasFragment extends Fragment
         txtNotaG8   = (TextView) getView().findViewById(R.id.txtNotaG8);
         txtNotaG9   = (TextView) getView().findViewById(R.id.txtNotaG9);
         txtNotaG10  = (TextView) getView().findViewById(R.id.txtNotaG10);
+
         txtNotaMG   = (TextView) getView().findViewById(R.id.txtNotaMG);
     }
 
@@ -275,7 +306,7 @@ public class BoxComparativoNotasFragment extends Fragment
             setDadosNotasPessoal(notaP0, notaP1, notaP2, notaP3, notaP4, notaP5, notaP6, notaP7, notaP8, notaP9, notaP10, notaMP);
             setDestaqueNotasPessoal(modaP0, modaP1, modaP2, modaP3, modaP4, modaP5, modaP6, modaP7, modaP8, modaP9, modaP10);
 
-            Log.i("PAULO", "notaP0 -> "+notaP0);
+            /*Log.i("PAULO", "notaP0 -> "+notaP0);
             Log.i("PAULO", "notaP1 -> "+notaP1);
             Log.i("PAULO", "notaP2 -> "+notaP2);
             Log.i("PAULO", "notaP3 -> "+notaP3);
@@ -298,7 +329,7 @@ public class BoxComparativoNotasFragment extends Fragment
             Log.i("PAULO", "modaP7 -> "+modaP7);
             Log.i("PAULO", "modaP8 -> "+modaP8);
             Log.i("PAULO", "modaP9 -> "+modaP9);
-            Log.i("PAULO", "modaP10 -> "+modaP10);
+            Log.i("PAULO", "modaP10 -> "+modaP10);*/
 
         }
         catch (JSONException e)
@@ -328,101 +359,123 @@ public class BoxComparativoNotasFragment extends Fragment
     {
         if(modaP0.equals("S"))
         {
-            txtNotaP0.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP0.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP0.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP0.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP0.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP1.equals("S"))
         {
-            txtNotaP1.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP1.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP1.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP1.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP1.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP2.equals("S"))
         {
-            txtNotaP2.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP2.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP2.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP2.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP2.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP3.equals("S"))
         {
-            txtNotaP3.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP3.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP3.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP3.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP3.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP4.equals("S"))
         {
-            txtNotaP4.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP4.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP4.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP4.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP4.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP5.equals("S"))
         {
-            txtNotaP5.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP5.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP5.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP5.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP5.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP6.equals("S"))
         {
-            txtNotaP6.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP6.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP6.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP6.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP6.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP7.equals("S"))
         {
-            txtNotaP7.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP7.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP7.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP7.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP7.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP8.equals("S"))
         {
-            txtNotaP8.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP8.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP8.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP8.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP8.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP9.equals("S"))
         {
-            txtNotaP9.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP9.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP9.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP9.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP9.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaP10.equals("S"))
         {
-            txtNotaP10.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaP10.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaP10.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaP10.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaP10.setTypeface(null, Typeface.NORMAL);
         }
 
     }
@@ -515,7 +568,7 @@ public class BoxComparativoNotasFragment extends Fragment
             setDadosNotasGeral(notaG0, notaG1, notaG2, notaG3, notaG4, notaG5, notaG6, notaG7, notaG8, notaG9, notaG10, notaMG);
             setDestaqueNotasGeral(modaG0, modaG1, modaG2, modaG3, modaG4, modaG5, modaG6, modaG7, modaG8, modaG9, modaG10);
 
-            Log.i("PAULO", "notaG0 -> "+notaG0);
+            /*Log.i("PAULO", "notaG0 -> "+notaG0);
             Log.i("PAULO", "notaG1 -> "+notaG1);
             Log.i("PAULO", "notaG2 -> "+notaG2);
             Log.i("PAULO", "notaG3 -> "+notaG3);
@@ -538,7 +591,7 @@ public class BoxComparativoNotasFragment extends Fragment
             Log.i("PAULO", "modaG7 -> "+modaG7);
             Log.i("PAULO", "modaG8 -> "+modaG8);
             Log.i("PAULO", "modaG9 -> "+modaG9);
-            Log.i("PAULO", "modaG10 -> "+modaG10);
+            Log.i("PAULO", "modaG10 -> "+modaG10);*/
 
         }
         catch (JSONException e)
@@ -568,101 +621,123 @@ public class BoxComparativoNotasFragment extends Fragment
     {
         if(modaG0.equals("S"))
         {
-            txtNotaG0.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG0.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG0.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG0.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG0.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG1.equals("S"))
         {
-            txtNotaG1.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG1.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG1.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG1.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG1.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG2.equals("S"))
         {
-            txtNotaG2.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG2.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG2.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG2.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG2.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG3.equals("S"))
         {
-            txtNotaG3.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG3.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG3.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG3.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG3.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG4.equals("S"))
         {
-            txtNotaG4.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG4.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG4.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG4.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG4.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG5.equals("S"))
         {
-            txtNotaG5.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG5.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG5.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG5.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG5.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG6.equals("S"))
         {
-            txtNotaG6.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG6.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG6.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG6.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG6.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG7.equals("S"))
         {
-            txtNotaG7.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG7.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG7.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG7.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG7.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG8.equals("S"))
         {
-            txtNotaG8.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG8.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG8.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG8.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG8.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG9.equals("S"))
         {
-            txtNotaG9.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG9.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG9.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG9.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG9.setTypeface(null, Typeface.NORMAL);
         }
 
         if(modaG10.equals("S"))
         {
-            txtNotaG10.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_selected));
+            txtNotaG10.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape_novo));
+            txtNotaG10.setTypeface(null, Typeface.BOLD);
         }
         else
         {
             txtNotaG10.setBackgroundDrawable(getView().getResources().getDrawable(R.drawable.cell_shape));
+            txtNotaG10.setTypeface(null, Typeface.NORMAL);
         }
 
     }
